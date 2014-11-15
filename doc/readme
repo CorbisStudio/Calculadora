@@ -1,0 +1,20 @@
+para trabajar de forma ordenada lo que haremos es que cada desarrollador deberá realizar una copia del repositorio en so pc local, crear un branch (rama) con su nombre o nickname, para realizar los cambios dependiendo de la issue que se hagan cargo. 
+
+Pasos para realizar cambios
+---------------------------
+* 1) Ingresa dentro de nuestra carpeta dev/project
+* 2) Descargar una copia local del repositorio ``$ git clone https://github.com/FrankLabs/Calculadora.git``
+* 3) Crear el branch con mi nombre ``$ git checkout -b <mi nick name>``
+* 4) Luego de realizar los cambios y probar, agrego los archivos nuevos o modificados ``$ git add <nombre del archivo>
+* 5) Luego de agregar todos los archivos se confirma el cambio ``$ git commit -m "<descripcion del cambio>"``
+* 7) Subimos los cambios al servidor ``$ git push origin "<descripcion de nuestro branch>"``
+* 8) Me tomo una taza de cafe o por el calor una buena cerveza o fernet (en caso de no tomar cafe, alcohol o algo por el estilo: bueno cada uno desperdicia su vida como quiere jajaja ;- ) ).
+
+Notas Importantes
+-----------------
+si empezamos a trabajar sobre una copia local nuestra realizada con anterioridad, si o si necesitamos asegurarnos que nuestro branch master esta totalemtne actualizado para eso ejecutamos el siguiente commando ``
+$ git pull origin master`` luego de eso podemo debemos pasarnos a nuestro branch y actualizarlo con lo nuevo que descargamos para eso vamos ahacer un merge desde nuestro branch con master 
+* 1) ``git checkout <nombre de nuestro branch>``
+* 2) una vez confirmado que estamos en nuestro branch ejecutamos ``$ git merge master --no-ff``
+
+
