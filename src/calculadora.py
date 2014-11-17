@@ -18,14 +18,20 @@ class calculadora():
     datos = []
 
     def insertar(self):
-        self.numero_1 = int(raw_input('ingrese el primer número:'))
-        self.numero_2 = int(raw_input('ingrese el segundo número:'))
+        while (self.numero_1 is None) or (self.numero_2 is None):
+            try:
+                self.numero_1 = float(raw_input('ingrese el primer número:'))
+                self.numero_2 = float(raw_input('ingrese el segundo número:'))
+            except ValueError:
+                print 'Debe ingresar sólo números'
+                print self.numero_1
+                print self.numero_2
 
     def suma(self):
         self.insertar()
         self.resultado = self.numero_1 + self.numero_2
         print self.resultado
-
+        return self.resultado
 
     """
     Estos son porque lo dijiste de joda y me lo tomé personal xD 
@@ -44,6 +50,7 @@ class calculadora():
             media = media + self.datos[i]
         self.media = media / cantidad
         print self.media
+        return self.media
 
     """
     Para esto usemos la función media
@@ -55,6 +62,7 @@ class calculadora():
             desvio = desvio + (x - self.media)**2
         self.desvio = sqrt(desvio / len(self.datos))
         print self.desvio
+        return self.desvio
 
     """
     Hagámoslo divertido y usemos la media y desvio calculados antes para 
