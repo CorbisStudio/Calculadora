@@ -24,8 +24,6 @@ class calculadora():
                 self.numero_2 = float(raw_input('ingrese el segundo número:'))
             except ValueError:
                 print 'Debe ingresar sólo números'
-                print self.numero_1
-                print self.numero_2
 
     def suma(self):
         self.insertar()
@@ -42,10 +40,15 @@ class calculadora():
         if cantidad < 0:
             print 'Debe ingresar un número positivo'
             self.calc_media()
-        media = 0
 
+        media = 0
         for i in range(cantidad):
-            valor = float(raw_input('ingrese el dato Nº '+str(i+1)+':'))
+            valor = None
+            while valor is None:
+                try:
+                    valor = float(raw_input('ingrese el dato Nº '+str(i+1)+':'))
+                except ValueError:
+                    print 'Debe ingresar sólo números'
             self.datos.append(valor)
             media = media + self.datos[i]
         self.media = media / cantidad
