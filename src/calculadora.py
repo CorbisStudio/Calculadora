@@ -18,6 +18,8 @@ class calculadora():
     datos = []
 
     def insertar(self):
+        self.numero_1 = None
+        self.numero_2 = None
         while (self.numero_1 is None) or (self.numero_2 is None):
             try:
                 self.numero_1 = float(raw_input('ingrese el primer número:'))
@@ -25,10 +27,32 @@ class calculadora():
             except ValueError:
                 print 'Debe ingresar sólo números'
 
-    def suma(self):
-        self.insertar()
+    def suma(self, numero_1='', numero_2=''):
+        if (numero_1 is not '') and (numero_2 is not ''):
+            try:
+                self.numero_1 = float(numero_1)
+                self.numero_2 = float(numero_2)
+            except ValueError:
+                print 'Debe ingresar sólo números'
+                self.insertar()
+        elif (self.numero_1 is None) or (self.numero_2 is None):
+            self.insertar()
+
         self.resultado = self.numero_1 + self.numero_2
-        print self.resultado
+        return self.resultado
+
+    def resta(self, numero_1='', numero_2=''):
+        if (numero_1 is not '') and (numero_2 is not ''):
+            try:
+                self.numero_1 = float(numero_1)
+                self.numero_2 = float(numero_2)
+            except ValueError:
+                print 'Debe ingresar sólo números'
+                self.insertar()
+        elif (self.numero_1 is None) or (self.numero_2 is None):
+            self.insertar()
+
+        self.resultado = self.numero_1 - self.numero_2
         return self.resultado
 
     """

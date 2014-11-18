@@ -4,10 +4,13 @@ from calculadora import calculadora
 
 calc = calculadora()
 opciones = {
+    'insertar números': calc.insertar,
     'suma': calc.suma,
+    'resta': calc.resta,
     'calc_media': calc.calc_media,
     'calc_desvio': calc.calc_desvio,
-    'grafico': calc.grafico
+    'grafico': calc.grafico,
+    'salir': 'chau'
 }
 
 def main():
@@ -20,7 +23,11 @@ def main():
                     'intente nuevamente:')
 
     operacion = opciones[seleccion]
-    operacion()
+    if operacion != 'chau':
+        resultado = operacion()
+        if operacion != 'insertar números':
+            print 'El resultado de '+str(seleccion)+' es '+str(resultado)
+        main()
 
 if __name__ == '__main__':
     main()
