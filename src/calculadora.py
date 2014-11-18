@@ -9,6 +9,7 @@ Para la librería matplotlib hice
 import matplotlib.pyplot as plt
 from math import sqrt
 
+
 class calculadora():
     numero_1 = None
     numero_2 = None
@@ -76,7 +77,6 @@ class calculadora():
             self.datos.append(valor)
             media = media + self.datos[i]
         self.media = media / cantidad
-        print self.media
         return self.media
 
     """
@@ -88,7 +88,6 @@ class calculadora():
         for x in self.datos:
             desvio = desvio + (x - self.media)**2
         self.desvio = sqrt(desvio / len(self.datos))
-        print self.desvio
         return self.desvio
 
     """

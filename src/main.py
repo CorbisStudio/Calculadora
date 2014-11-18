@@ -24,10 +24,10 @@ def main():
 
     operacion = opciones[seleccion]
     if operacion != 'chau':
-        resultado = operacion()
-        if operacion != 'insertar números':
+        if operacion != 'insertar números' and operacion != 'grafico':
+            resultado = operacion()
             print 'El resultado de '+str(seleccion)+' es '+str(resultado)
-        main()
+            main()
 
 if __name__ == '__main__':
     main()
