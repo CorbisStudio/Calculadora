@@ -29,6 +29,8 @@ def main():
         if seleccion != 'insertar números' and seleccion != 'grafico':
             print 'El resultado de '+str(seleccion)+' es '+str(resultado)
         main()
+    else:
+        print 'CHAU!'
 
 if __name__ == '__main__':
     main()
