@@ -17,8 +17,6 @@ class calculadora():
     datos = []
 
     def insertar(self):
-        self.numero_1 = None
-        self.numero_2 = None
         while (self.numero_1 is None) or (self.numero_2 is None):
             try:
                 self.numero_1 = float(raw_input('ingrese el primer número:'))
