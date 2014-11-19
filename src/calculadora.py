@@ -25,9 +25,19 @@ class calculadora():
     Este método recibe dos parametros y devuelve el producto de ambos.
     Precondición: a y b deben ser numeros.
     """
-    def multiplicacion(self):
-        resultado = self.numero_1 * self.numero_2
+    def multiplicacion(self, numero_1='', numero_2=''):     
+        if (numero_1 is not '') and (numero_2 is not ''):
+            try:
+                self.numero_1 = float(numero_1)
+                self.numero_2 = float(numero_2)
+            except ValueError:
+                print 'Debe ingresar sólo números'
+                self.insertar_valores()
+        elif (self.numero_1 is None) or (self.numero_2 is None):
+            self.insertar_valores()
+        resultado =  self.numero_1 * self.numero_2
         return resultado
+
 
 """
 Este if sirve para distinguir a cuando se llama el archivo desde otro archivo
