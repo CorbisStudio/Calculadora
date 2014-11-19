@@ -89,17 +89,15 @@ class calculadora():
             """
             datos_aux = []
             for elem in datos:
-                datos_aux += [float(elem)]
+                try:
+                    datos_aux += [float(elem)]
+                except ValueError:
+                    print 'Debe ingresar sólo números'
+                    self.calc_media()
             datos = datos_aux
 
 
             for elem in datos:
-                try:
-                    elem = float(elem)
-                except ValueError:
-                    print 'Debe ingresar sólo números'
-                    self.calc_media()
-
                 media = media + elem
         else:
             for elem in datos:
