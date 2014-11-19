@@ -14,8 +14,6 @@ class calculadora():
     numero_1 = None
     numero_2 = None
     resultado = None
-    media = None
-    desvio = None
     datos = []
 
     def insertar(self):
@@ -56,39 +54,86 @@ class calculadora():
         self.resultado = self.numero_1 - self.numero_2
         return self.resultado
 
+    def division(self, numero_1='', numero_2=''):
+        if (numero_1 is not '') and (numero_2 is not ''):
+            try:
+                self.numero_1 = float(numero_1)
+                self.numero_2 = float(numero_2)
+            except ValueError:
+                print 'Debe ingresar sólo números'
+                self.insertar()
+        elif (self.numero_1 is None) or (self.numero_2 is None):
+            self.insertar()
+
+        if self.numero_2 == 0:
+            print 'No puede dividir por 0'
+            self.insertar()
+
+        self.resultado = self.numero_1 / self.numero_2
+        return self.resultado
+
     """
     Estos son porque lo dijiste de joda y me lo tomé personal xD 
     (na joda, andaba aburrido y no me acordaba mucho la sintaxis de python)
+    datos toma un arreglo de datos [1, 2, 3, ....]
     """
-    def calc_media(self):
-        cantidad = int(raw_input('¿Cuántos datos desea ingresar?'))
-        if cantidad < 0:
-            print 'Debe ingresar un número positivo'
-            self.calc_media()
 
+    def calc_media(self, datos = ''):
         media = 0
-        for i in range(cantidad):
-            valor = None
-            while valor is None:
+        if datos == '':
+            datos = raw_input('Ingrese los datos separados por coma:')
+            datos = datos.split(',')
+
+            """
+            Debemos pasar los datos a float para que queden guardados
+            """
+            datos_aux = []
+            for elem in datos:
+                datos_aux += [float(elem)]
+            datos = datos_aux
+
+
+            for elem in datos:
                 try:
-                    valor = float(raw_input('ingrese el dato Nº '+str(i+1)+':'))
+                    elem = float(elem)
                 except ValueError:
                     print 'Debe ingresar sólo números'
-            self.datos.append(valor)
-            media = media + self.datos[i]
-        self.media = media / cantidad
+                    self.calc_media()
+
+                media = media + elem
+        else:
+            for elem in datos:
+                try:
+                    elem = float(elem)
+                except ValueError:
+                    print 'Debe ingresar un arreglo de números'
+                    self.calc_media()
+
+                media = media + elem
+
+        cantidad = len(datos)
+        #Sirve para el desvio, nada más
+        self.datos = datos
+        if cantidad != 0:
+            self.media = media / cantidad
+        else:
+            self.media = 0
         return self.media
 
     """
     Para esto usemos la función media
     """
-    def calc_desvio(self):
-        self.calc_media()
+    def calc_desvio(self, datos=''):
+        if datos == '':
+            media = self.calc_media()
+        else:
+            media = self.calc_media(datos)
         desvio = 0
         for x in self.datos:
-            desvio = desvio + (x - self.media)**2
-        self.desvio = sqrt(desvio / len(self.datos))
-        return self.desvio
+            desvio = desvio + (x - media)**2
+        desvio = sqrt(desvio / len(self.datos))
+
+        return desvio
 
     """
     Hagámoslo divertido y usemos la media y desvio calculados antes para 

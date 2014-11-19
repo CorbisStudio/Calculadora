@@ -7,6 +7,7 @@ opciones = {
     'insertar números': calc.insertar,
     'suma': calc.suma,
     'resta': calc.resta,
+    'division': calc.division,
     'calc_media': calc.calc_media,
     'calc_desvio': calc.calc_desvio,
     'grafico': calc.grafico,
@@ -23,11 +24,11 @@ def main():
                     'intente nuevamente:')
 
     operacion = opciones[seleccion]
-    if operacion != 'chau':
-        if operacion != 'insertar números' and operacion != 'grafico':
-            resultado = operacion()
+    if seleccion != 'salir':
+        resultado = operacion()
+        if seleccion != 'insertar números' and seleccion != 'grafico':
             print 'El resultado de '+str(seleccion)+' es '+str(resultado)
-            main()
+        main()
 
 if __name__ == '__main__':
     main()
