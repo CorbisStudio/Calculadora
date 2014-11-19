@@ -78,38 +78,36 @@ class calculadora():
 
     def calc_media(self, datos = ''):
         media = 0
+        datos_aux = []
+        
         if datos == '':
             datos = raw_input('Ingrese los datos separados por coma:')
             datos = datos.split(',')
 
-            """
-            Debemos pasar los datos a float para que queden guardados
-            """
-            datos_aux = []
             for elem in datos:
                 try:
+                    media = media + float(elem)
                     datos_aux += [float(elem)]
                 except ValueError:
                     print 'Debe ingresar sólo números'
                     self.calc_media()
-            datos = datos_aux
-
-
-            for elem in datos:
-                media = media + elem
         else:
             for elem in datos:
                 try:
                     elem = float(elem)
+                    datos_aux += [float(elem)]
                 except ValueError:
                     print 'Debe ingresar un arreglo de números'
                     self.calc_media()
 
                 media = media + elem
 
+        """
+        Debemos guardar los datos para usarlos en calc_desv.
+        """
+        self.datos = datos_aux
+        
         cantidad = len(datos)
-        #Sirve para el desvio, nada más
-        self.datos = datos
         if cantidad != 0:
             self.media = media / cantidad
         else:
